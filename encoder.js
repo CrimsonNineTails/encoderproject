@@ -60,34 +60,34 @@ var runes = {
 };
 
 var heiroglyphics = {
-32:" ",
-65:"<img src='images/heiroglyphics/a.gif'>",
-66:"<img src='images/heiroglyphics/b.gif'>",
-67:"<img src='images/heiroglyphics/c.gif'>",
-68:"<img src='images/heiroglyphics/d.gif'>",
-69:"<img src='images/heiroglyphics/e.gif'>",
-70:"<img src='images/heiroglyphics/f.gif'>",
-71:"<img src='images/heiroglyphics/g.gif'>",
-72:"<img src='images/heiroglyphics/h.gif'>",
-73:"<img src='images/heiroglyphics/i.gif'>",
-74:"<img src='images/heiroglyphics/j.gif'>",
-75:"<img src='images/heiroglyphics/k.gif'>",
-76:"<img src='images/heiroglyphics/l.gif'>",
-77:"<img src='images/heiroglyphics/m.gif'>",
-78:"<img src='images/heiroglyphics/n.gif'>",
-79:"<img src='images/heiroglyphics/o.gif'>",
-80:"<img src='images/heiroglyphics/p.gif'>",
-81:"<img src='images/heiroglyphics/q.gif'>",
-82:"<img src='images/heiroglyphics/r.gif'>",
-83:"<img src='images/heiroglyphics/s.gif'>",
-84:"<img src='images/heiroglyphics/t.gif'>",
-85:"<img src='images/heiroglyphics/u.gif'>",
-86:"<img src='images/heiroglyphics/v.gif'>",
-87:"<img src='images/heiroglyphics/w.gif'>",
-88:"<img src='images/heiroglyphics/x.gif'>",
-89:"<img src='images/heiroglyphics/y.gif'>",
-90:"<img src='images/heiroglyphics/z.gif'>"
-};
+    32:" ",
+    65:"<img src='images/heiroglyphics/a.gif'>",
+    66:"<img src='images/heiroglyphics/b.gif'>",
+    67:"<img src='images/heiroglyphics/c.gif'>",
+    68:"<img src='images/heiroglyphics/d.gif'>",
+    69:"<img src='images/heiroglyphics/e.gif'>",
+    70:"<img src='images/heiroglyphics/f.gif'>",
+    71:"<img src='images/heiroglyphics/g.gif'>",
+    72:"<img src='images/heiroglyphics/h.gif'>",
+    73:"<img src='images/heiroglyphics/i.gif'>",
+    74:"<img src='images/heiroglyphics/j.gif'>",
+    75:"<img src='images/heiroglyphics/k.gif'>",
+    76:"<img src='images/heiroglyphics/l.gif'>",
+    77:"<img src='images/heiroglyphics/m.gif'>",
+    78:"<img src='images/heiroglyphics/n.gif'>",
+    79:"<img src='images/heiroglyphics/o.gif'>",
+    80:"<img src='images/heiroglyphics/p.gif'>",
+    81:"<img src='images/heiroglyphics/q.gif'>",
+    82:"<img src='images/heiroglyphics/r.gif'>",
+    83:"<img src='images/heiroglyphics/s.gif'>",
+    84:"<img src='images/heiroglyphics/t.gif'>",
+    85:"<img src='images/heiroglyphics/u.gif'>",
+    86:"<img src='images/heiroglyphics/v.gif'>",
+  87:"<img src='images/heiroglyphics/w.gif'>",
+  88:"<img src='images/heiroglyphics/x.gif'>",
+  89:"<img src='images/heiroglyphics/y.gif'>",
+  90:"<img src='images/heiroglyphics/z.gif'>"
+  };
 
 
 document.getElementById("inputArea").addEventListener("keydown", function(e){
@@ -97,7 +97,7 @@ if($("input:checked").val()  == "echo"){
 if($("input:checked").val()  == "caesarcipher") {
   var lastPressed;
   if(e.keyCode > 89){
-    document.getElementById("textArea").innerHTML = caesarCipher[65];
+    document.getElementById("textArea").innerHTML += caesarCipher[65];
     lastPressed = caesarCipher[65];
   }
   else if (e.keyCode == 8) {
@@ -125,6 +125,25 @@ if($("input:checked").val()  == "heiroglyphics") {
   }
 }
 });
+
+document.getElementById('translationInputArea').addEventListener("keydown", function(e){
+  if($("input:checked").val()  == "caesarcipher") {
+    var lastPressed;
+
+    if(e.keyCode == 65){
+      document.getElementById("translationArea").innerHTML += caesarCipher[90];
+      lastPressed = caesarCipher[90];
+    }
+    else if (e.keyCode == 8) {
+        document.getElementById("translationArea").textContent = document.getElementById("translationArea").textContent.substr(0, document.getElementById("textArea").textContent.length - 1);
+    }
+    else {
+        document.getElementById("translationArea").innerHTML += caesarCipher[e.keyCode - 1];
+        lastPressed = caesarCipher[e.keyCode - 1];
+    }
+  }
+  });
+
 
 $('input[type="radio"]').click(function(){
   $('input:checked').prop('checked',false);
