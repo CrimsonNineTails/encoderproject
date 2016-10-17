@@ -89,7 +89,7 @@ var heiroglyphics = {
   90:"<img src='images/heiroglyphics/z.gif'>"
   };
 
-
+// the encoder
 document.getElementById("inputArea").addEventListener("keydown", function(e){
 if($("input:checked").val()  == "echo"){
   document.getElementById("textArea").innerHTML = "<p>" + document.getElementById("inputText").value + "</p>";
@@ -125,7 +125,7 @@ if($("input:checked").val()  == "heiroglyphics") {
   }
 }
 });
-
+// the decoder
 document.getElementById('translationInputArea').addEventListener("keydown", function(e){
   if($("input:checked").val()  == "caesarcipher") {
     var lastPressed;
