@@ -110,14 +110,17 @@ if($("input:checked").val()  == "caesarcipher") {
 }
 if($("input:checked").val()  == "runes") {
   if(e.keyCode == 8){
+      //back space delete
     document.getElementById("textArea").textContent =   document.getElementById("textArea").textContent.substr(0, document.getElementById("textArea").textContent.length - 1);
   }
   else{
     document.getElementById("textArea").innerHTML += runes[e.keyCode];
   }
 }
+// code for addeding heiroglyphics
 if($("input:checked").val()  == "heiroglyphics") {
   if(e.keyCode == 8){
+    //back space delete
       document.getElementById("textArea").textContent =   document.getElementById("textArea").textContent.substr(0, document.getElementById("textArea").textContent.length - 1);
   }
   else{
@@ -129,13 +132,28 @@ if($("input:checked").val()  == "heiroglyphics") {
 document.getElementById('translationInputArea').addEventListener("keydown", function(e){
   if($("input:checked").val()  == "caesarcipher") {
     var lastPressed;
-
-    if(e.keyCode == 65){
+    if (e.keyCode == 13) {
+      var message = document.getElementById("translationInputText").value;
+      message = message.split("");
+      for (var i = 0; i < message.length; i++) {
+        var translation = message[i].charCodeAt(0)-33;
+        if (translation == 65){
+          document.getElementById("translationArea").innerHTML += caesarCipher[90];
+        }
+        else {
+          document.getElementById("translationArea").innerHTML += caesarCipher[translation];
+        }
+      }
+    }
+    else if(e.keyCode == 65){
       document.getElementById("translationArea").innerHTML += caesarCipher[90];
       lastPressed = caesarCipher[90];
     }
     else if (e.keyCode == 8) {
         document.getElementById("translationArea").textContent = document.getElementById("translationArea").textContent.substr(0, document.getElementById("textArea").textContent.length - 1);
+    }
+    else if (e.keyCode == 32) {
+      document.getElementById("translationArea").innerHTML += caesarCipher[e.keyCode + 1];
     }
     else {
         document.getElementById("translationArea").innerHTML += caesarCipher[e.keyCode - 1];
