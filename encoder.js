@@ -152,6 +152,7 @@ document.getElementById('translationInputArea').addEventListener("keydown", func
     else if (e.keyCode == 8) {
         document.getElementById("translationArea").textContent = document.getElementById("translationArea").textContent.substr(0, document.getElementById("textArea").textContent.length - 1);
     }
+    // for the enter key
     else if (e.keyCode == 32) {
       document.getElementById("translationArea").innerHTML += caesarCipher[e.keyCode + 1];
     }
@@ -162,7 +163,7 @@ document.getElementById('translationInputArea').addEventListener("keydown", func
   }
   });
 
-
+//allows toggling of radio
 $('input[type="radio"]').click(function(){
   $('input:checked').prop('checked',false);
   $(this).prop('checked',true);
